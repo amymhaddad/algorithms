@@ -13,7 +13,6 @@ roman_numerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IV", "X"]
 #         return roman_to_int[num]
 # print(roman_to_int(roman))
 
-number = 6
 
 
 roman_numeral_values = {
@@ -24,7 +23,7 @@ roman_numeral_values = {
     10: "X",
 }
 
-conversion = []
+
 
 # for num in range(1, number+1):
 #     if num % 5:
@@ -40,15 +39,29 @@ conversion = []
 #         else:
 
 
-#make this 1 function that returns a sorted list
+
+number = 6
+
 def int_vals_to_extract(roman_numeral_values):
     vals_to_extract = []
+
     for nums in roman_numeral_values.keys():
-        if number % nums == 0 or number % nums == 1:
-            vals_to_extract.append(nums)
+        converted_value = roman_numeral_values.get(number)
+
+        if converted_value:
+            vals_to_extract.append(converted_value)
+            return vals_to_extract
+        
+        else:
+            if number % nums == 0 or number % nums == 1:
+                vals_to_extract.append(nums)
+    
     return sorted(vals_to_extract, reverse=True)
 
 numbers_to_extract = int_vals_to_extract(roman_numeral_values)
+
+print(numbers_to_extract)
+
 
 def convert(numbers_to_extract):
     roman_value = []
@@ -57,4 +70,29 @@ def convert(numbers_to_extract):
 
     return "".join(roman_value)
 
-print(convert(numbers_to_extract))
+# print(convert(numbers_to_extract))
+
+
+
+#try, except version 
+# to_extract(roman_numeral_values):
+#     vals_to_extract = []
+
+#     for nums in roman_numeral_values.keys():
+#         try:
+#             converted_value = roman_numeral_values.get(number)
+    
+#         except:
+#             if number % nums == 0 or number % nums == 1:
+#                 vals_to_extract.append(nums)
+        
+#         else:
+#             vals_to_extract.append(converted_value)
+#             return vals_to_extract
+
+#     return sorted(vals_to_extract, reverse=True)
+
+# numbers_to_extract = int_vals_to_extract(roman_numeral_values)
+
+
+
