@@ -23,24 +23,11 @@ roman_numeral_values = {
     10: "X",
 }
 
+number = 14
 
+#Write an algo that gets the mutliples for 5, 10, 4, 9. Then, cycle through given number and see if there are any multiples matches
+#Then match the multiples 
 
-# for num in range(1, number+1):
-#     if num % 5:
-#         x = roman_numeral_values.get(num)
-
-
-# multiples = []
-# for nums in roman_numeral_values.keys():
-#     if number % nums == 0 and nums > 1:
-#         if nums == number:
-#             value = roman_numeral_values.get(nums)
-#                 multiples.append(value)
-#         else:
-
-
-
-number = 6
 
 def int_vals_to_extract(roman_numeral_values):
     vals_to_extract = []
@@ -53,14 +40,25 @@ def int_vals_to_extract(roman_numeral_values):
             return vals_to_extract
         
         else:
-            if number % nums == 0 or number % nums == 1:
-                vals_to_extract.append(nums)
+            common_nums = []
+            for num in range(1, number+1):
+                if num in roman_numeral_values.keys():
+                    common_nums.append(num)
+            max_common_nums = max(common_nums)
+            difference = number - max_common_nums
+            print(difference)
+            #cycle through the difference and add to the balance until sum to number // I'll need a container that's comparing to the given number
+           
+
     
     return sorted(vals_to_extract, reverse=True)
 
 numbers_to_extract = int_vals_to_extract(roman_numeral_values)
 
 print(numbers_to_extract)
+
+
+
 
 
 def convert(numbers_to_extract):
@@ -71,6 +69,16 @@ def convert(numbers_to_extract):
     return "".join(roman_value)
 
 # print(convert(numbers_to_extract))
+
+
+
+
+#extra
+
+# if number % nums == 0 or number % nums == 1:
+#     vals_to_extract.append(nums)
+
+
 
 
 
