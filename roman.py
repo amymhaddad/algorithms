@@ -13,7 +13,7 @@ roman_numerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IV", "X"]
 #         return roman_to_int[num]
 # print(roman_to_int(roman))
 
-number = 1
+number = 6
 
 
 roman_numeral_values = {
@@ -31,13 +31,17 @@ conversion = []
 #         x = roman_numeral_values.get(num)
 
 
-multiples = []
-for nums in roman_numeral_values.keys():
-    if number % nums == 0 and nums > 1:
-        if nums == number:
-            print(roman_numeral_values.get(nums))
-        # multiples.append(nums)
-    
-    
+# multiples = []
+# for nums in roman_numeral_values.keys():
+#     if number % nums == 0 and nums > 1:
+#         if nums == number:
+#             value = roman_numeral_values.get(nums)
+#                 multiples.append(value)
+#         else:
 
-# print(multiples)
+
+vals_to_extract = []
+for nums in roman_numeral_values.keys():
+    if number % nums == 0 or number % nums == 1:
+        vals_to_extract.append(nums)
+
