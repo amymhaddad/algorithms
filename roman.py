@@ -40,8 +40,21 @@ conversion = []
 #         else:
 
 
-vals_to_extract = []
-for nums in roman_numeral_values.keys():
-    if number % nums == 0 or number % nums == 1:
-        vals_to_extract.append(nums)
+#make this 1 function that returns a sorted list
+def int_vals_to_extract(roman_numeral_values):
+    vals_to_extract = []
+    for nums in roman_numeral_values.keys():
+        if number % nums == 0 or number % nums == 1:
+            vals_to_extract.append(nums)
+    return sorted(vals_to_extract, reverse=True)
 
+numbers_to_extract = int_vals_to_extract(roman_numeral_values)
+
+def convert(numbers_to_extract):
+    roman_value = []
+    for int_val in numbers_to_extract:
+        roman_value.append(roman_numeral_values.get(int_val))
+
+    return roman_value
+
+print(convert(numbers_to_extract))
