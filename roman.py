@@ -55,6 +55,6 @@ def convert(numbers_to_extract):
     for int_val in numbers_to_extract:
         roman_value.append(roman_numeral_values.get(int_val))
 
-    return roman_value
+    return "".join(roman_value)
 
 print(convert(numbers_to_extract))
