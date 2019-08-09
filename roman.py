@@ -46,9 +46,12 @@ for num in range(1, number +1):
     if num in multiple_five and num in roman_numeral_values.keys():
         nums_to_convert.append(num)
 
+sorted_numbers_to_convert = sorted(nums_to_convert, reverse=True)
+
 number_to_roman_numeral = []
-for num in nums_to_convert:
+for num in sorted_numbers_to_convert:
     letter = roman_numeral_values.get(num)
+    print('l', letter)
     number_to_roman_numeral.append(letter)
 print(number_to_roman_numeral)
 
