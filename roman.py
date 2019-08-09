@@ -16,12 +16,12 @@ roman_numerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IV", "X"]
 
 
 roman_numeral_values = {
-    1: "I",
-    5: "V",
-    10: "X",
+    "I": 1,
+    "V": 5,
+    "X": 10,
 }
 
-number = 15
+number = 8
 
 def exact_match(roman_numeral_values):
     vals_to_extract = []
@@ -35,25 +35,54 @@ def exact_match(roman_numeral_values):
     
 numbers_to_extract = exact_match(roman_numeral_values)
 
-
+#get multiples of 5
 multiple_five = []
 for num in range(1, number+1):
     if num % 5 == 0:
         multiple_five.append(num)
 
-nums_to_convert = []
-for num in range(1, number +1):
-    if num in multiple_five and num in roman_numeral_values.keys():
-        nums_to_convert.append(num)
+#see if number is a mutliple of 5
+convert = []
+while True:
+    if sum(convert) > number or sum(convert) == number:
+        break
+    
+    if sum(convert) < number and number - sum(convert) >= 10:
+        convert.append(roman_numeral_values['X'])
+    
+    if sum(convert) < number and number - sum(convert) == 5:
+        convert.append(roman_numeral_values['V'])
+            
+   
+print(convert)
+    
 
-sorted_numbers_to_convert = sorted(nums_to_convert, reverse=True)
+    
+#     if sum(convert) > number:
+#         add_five = convert.append(roman_numeral_values['I'])
 
-number_to_roman_numeral = []
-for num in sorted_numbers_to_convert:
-    letter = roman_numeral_values.get(num)
-    print('l', letter)
-    number_to_roman_numeral.append(letter)
-print(number_to_roman_numeral)
+# print(convert)
+
+
+
+#     if sum(convert) < number:
+#         convert.append(num)
+# print(convert)
+    
+
+
+
+# sorted_numbers_to_convert = sorted(nums_to_convert, reverse=True)
+
+
+
+# number_to_roman_numeral = []
+# for num in sorted_numbers_to_convert:
+#     letter = roman_numeral_values.get(num)
+#     number_to_roman_numeral.append(letter)
+
+
+#     print(number_to_roman_numeral)
 
 
 
