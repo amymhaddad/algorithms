@@ -7,6 +7,8 @@ roman_numeral_values = {
     "L": 50,
 }
 
+reversed_roman_to_arabic = dict(map(reversed, roman_numeral_values.items()))
+
 number = 8
 convert = []
 
@@ -17,11 +19,10 @@ def arabic_to_roman(number):
     else:
         return number_not_multiple_of_five(number)
 
-
 def multiple_five(number):
     return [num for num in range(1, number+1) if num % 5 == 0]
 
-    
+
 def number_is_multiple_of_five(number):
 
     while True:
@@ -53,19 +54,13 @@ def number_not_multiple_of_five(number):
     return convert
     
 
-    
+numbers_to_convert = arabic_to_roman(number)
 
+def conversion(numbers_to_convert):
+    roman_numeral = []
 
-
-
-# def exact_match(roman_numeral_values):
-#     vals_to_extract = []
-
-#     for nums in roman_numeral_values.keys():
-#         converted_value = roman_numeral_values.get(number)
-
-#         if converted_value:
-#             vals_to_extract.append(converted_value)
-#             return vals_to_extract
-    
-# numbers_to_extract = exact_match(roman_numeral_values)
+    for num in numbers_to_convert:
+        roman_numeral.append(reversed_roman_to_arabic.get(num))
+    return "".join(roman_numeral)
+     
+print(conversion(numbers_to_convert))
