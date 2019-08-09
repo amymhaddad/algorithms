@@ -19,9 +19,11 @@ roman_numeral_values = {
     "I": 1,
     "V": 5,
     "X": 10,
+    "L": 50,
 }
 
-number = 8
+number = 3
+convert = []
 
 def exact_match(roman_numeral_values):
     vals_to_extract = []
@@ -35,40 +37,42 @@ def exact_match(roman_numeral_values):
     
 numbers_to_extract = exact_match(roman_numeral_values)
 
-#get multiples of 5
-multiple_five = []
-for num in range(1, number+1):
-    if num % 5 == 0:
-        multiple_five.append(num)
 
-#see if number is a mutliple of 5
-convert = []
-while True:
-    if sum(convert) > number or sum(convert) == number:
-        break
+multiple_five = [num for num in range(1, number+1) if num % 5 == 0]
+
+def number_is_multiple_of_five():
+
+    while True:
+        if sum(convert) > number or sum(convert) == number:
+            break
+        
+        if number - sum(convert) >= 10:
+            convert.append(roman_numeral_values['X'])
+        
+        if number - sum(convert) == 5:
+            convert.append(roman_numeral_values['V'])
+    return convert
+
+
+def number_not_multiple_of_five():
+    while True:
+        if sum(convert) > number or sum(convert) == number:
+            break
+
+        if number - sum(convert) >= 10:
+            convert.append(roman_numeral_values['X'])
     
-    if sum(convert) < number and number - sum(convert) >= 10:
-        convert.append(roman_numeral_values['X'])
+        if number - sum(convert) < 10 and number - sum(convert) > 5:
+            convert.append(roman_numeral_values['V'])
+        
+        if number - sum(convert) < 5:
+            convert.append(roman_numeral_values['I'])
     
-    if sum(convert) < number and number - sum(convert) == 5:
-        convert.append(roman_numeral_values['V'])
-            
-   
-print(convert)
+    return convert
+    
+print(number_not_multiple_of_five())
     
 
-    
-#     if sum(convert) > number:
-#         add_five = convert.append(roman_numeral_values['I'])
-
-# print(convert)
-
-
-
-#     if sum(convert) < number:
-#         convert.append(num)
-# print(convert)
-    
 
 
 
