@@ -1,5 +1,5 @@
 
-str1 = 'a'
+str1 = 'aa'
 str2 = 'ba'
 
 def find_diff(str1, str2):
@@ -11,7 +11,7 @@ def find_diff(str1, str2):
 
 
 
-        
+
 if len(str1) > len(str2):
     compare_string = str1[:len(str2)]
     for i, letter in enumerate(compare_string):
