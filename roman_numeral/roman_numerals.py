@@ -27,13 +27,23 @@ def conversion(number):
 
     else:
         convert = ''
-        
-        # if number in roman_numeral_values.keys():
-        convert += roman_numeral_values[number]
+        reduced_num = number
+        #FIRST see if the number is in the dictionary
+        for arabic_num, letter in roman_numeral_values.items():
+            if number == arabic_num:
+                convert += roman_numeral_values[number]
+                #subtract the converted amount from the given number
+                reduced_num -= arabic_num
+
+        print(reduced_num)
+           
+        # except KeyError:
         
 
     
     return convert
+    #pass the updated number into conversion
+    # return convert and conversion(number-1)
 
 print(conversion(number))
             
