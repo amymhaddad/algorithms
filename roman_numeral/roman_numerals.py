@@ -3,7 +3,7 @@
 roman_numerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IV", "X"]
 
 
-number = 3
+number = 6
 
 
 roman_numeral_values = {
@@ -14,11 +14,17 @@ roman_numeral_values = {
 
 conversion = []
 
-multiples = []
-for nums in range(1, number +1):
-    if nums % 5 == 0:
-        multiples.append(nums)
+# multiples = []
+# for nums in range(1, number +1):
+#     if nums % 5 == 0:
+#         multiples.append(nums)
 
+def multiples_of_five():
+    multiples = []
+    for nums in range(1, number +1):
+        if nums % 5 == 0:
+            multiples.append(nums)
+    return multiples
 
 def conversion(number):
     if number == 0:
@@ -28,7 +34,7 @@ def conversion(number):
         convert = []
         reduced_num = number
 
-        if number in multiples:
+        if number in multiples_of_five():
             convert.append(roman_numeral_values[number])
             reduced_num -= number
         else:
