@@ -15,4 +15,13 @@ for num_outer in range(1, num2+1):
         if num_outer * num_inner == num2:
             num2_factors.append(num_outer)
 
-print(max(set(num1_factors) & set(num2_factors)))
+gcd = max(set(num1_factors) & set(num2_factors))
+
+
+def gdc(num1, num2):
+    if num1 % test_num == 0 and num2 % test_num == 0:
+        return test_num
+    else:
+        test_num -= 1
+    
+    
