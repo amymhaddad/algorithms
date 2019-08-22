@@ -8,18 +8,9 @@ number = 6
 
 roman_numeral_values = {1: "I", 5: "V", 10: "X"}
 
-
-# def multiples_of_five():
-#     """Create a list of numbers that are multiples of 5"""
-#     multiples = []
-#     for nums in range(1, number + 1):
-#         if nums % 5 == 0:
-#             multiples.append(nums)
-#     return multiples
-
-
 def conversion(number):
     """Convert an Arabic number to its roman numeral equivalent"""
+    
     if number == 0:
         return ""
 
@@ -27,14 +18,27 @@ def conversion(number):
         convert = []
         reduced_num = number
 
+    #IF a number is a multiple of 5
         if number % 5 == 0:
+            #Extract the multiple of 5 from the dictionary and add it to the converted list
             convert.append(roman_numeral_values[number])
+            #Reduce the number by the amount of that number (in order to go back through and get the remaining values.)
             reduced_num -= number
-        else:
+
+        elif number > 5:
+            remainder = number % 5
+            multiple_of_five = roman_numeral_values[(number-remainder)]
+            convert.append(multiple_of_five)
+            
+            return "".join(convert) + conversion(remainder)
+
+
+        elif number < 5:
+            #If number is not a multiple of 5, then reduce the number by 1 and add that value to the converted list
             reduced_num -= 1
             convert.append(roman_numeral_values[1])
 
-    return "".join(convert) + conversion(reduced_num)
+        return "".join(convert) + conversion(reduced_num)
 
 
 print(conversion(number))
