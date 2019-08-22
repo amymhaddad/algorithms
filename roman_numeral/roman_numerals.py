@@ -9,13 +9,13 @@ number = 6
 roman_numeral_values = {1: "I", 5: "V", 10: "X"}
 
 
-def multiples_of_five():
-    """Create a list of numbers that are multiples of 5"""
-    multiples = []
-    for nums in range(1, number + 1):
-        if nums % 5 == 0:
-            multiples.append(nums)
-    return multiples
+# def multiples_of_five():
+#     """Create a list of numbers that are multiples of 5"""
+#     multiples = []
+#     for nums in range(1, number + 1):
+#         if nums % 5 == 0:
+#             multiples.append(nums)
+#     return multiples
 
 
 def conversion(number):
@@ -27,7 +27,7 @@ def conversion(number):
         convert = []
         reduced_num = number
 
-        if number in multiples_of_five():
+        if number % 5 == 0:
             convert.append(roman_numeral_values[number])
             reduced_num -= number
         else:
