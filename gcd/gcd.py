@@ -1,5 +1,5 @@
 num1 = 24
-num2 = 1
+num2 = 10
 
 num1_factors = []
 for num_outer in range(1, num1 + 1):
