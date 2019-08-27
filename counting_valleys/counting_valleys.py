@@ -2,11 +2,9 @@ steps = "DDUUDDUDUUUD"
 # steps = "UDDDUDUU"
 
 letter_with_count = []
-
 repeated_letters = ''
 
 for i, letter in enumerate(steps):
-    # if list is empty, then add a letter to it
     if not repeated_letters:
         repeated_letters += letter
     
@@ -27,20 +25,18 @@ if len(repeated_letters) > 1:
 print(letter_with_count)
 
 
-# ['DD', 'UU', 'DD', 'UUU']
-
-# [DDD, UU]
-
 counter = 0
-
 up_down_step = ''
 for step_type in letter_with_count:
+    # if the type of step (up or down) is not in the empty string, then ad it
     if not up_down_step:
         up_down_step += step_type
 
+    #If the types of steps are the same, don't touch the count -- i'm not traversing a valley
     elif step_type in up_down_step:
         counter += 0
 
+    #The types of steps are differnet (ie, i go down then I go up -- so I count it as a valley)
     else:
         counter += 1
 
