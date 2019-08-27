@@ -1,5 +1,5 @@
-# steps = "DDUUDDUDUUUD"
-steps = "UDDDUDUU"
+steps = "DDUUDDUDUUUD"
+# steps = "UDDDUDUU"
 
 letter_with_count = []
 
@@ -20,16 +20,30 @@ for i, letter in enumerate(steps):
         if len(repeated_letters) >= 2:
             letter_with_count.append(repeated_letters)
         repeated_letters = letter
+
+#At the end of the string, and will add in the repeated letters ONLY if there's multiple 
 if len(repeated_letters) > 1:
     letter_with_count.append(repeated_letters)
 print(letter_with_count)
+
+
 # ['DD', 'UU', 'DD', 'UUU']
 
-# counter = 0
+# [DDD, UU]
 
-# up_down_step = ''
-# for step_type in repeated_letters:
-#     if not up_down_step:
-#         up_down_step += step_type
+counter = 0
+
+up_down_step = ''
+for step_type in letter_with_count:
+    if not up_down_step:
+        up_down_step += step_type
+
+    elif step_type in up_down_step:
+        counter += 0
+
+    else:
+        counter += 1
+
+print(counter)
     
      
