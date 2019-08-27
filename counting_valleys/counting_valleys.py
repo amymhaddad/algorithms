@@ -1,26 +1,5 @@
-steps = "DDUUDDUDUUUD"
-
-
-# letters = [letter for letter in s]
-
-# count_u = 0
-# count_d = 0
-
-# for letter in letters:
-#     if letter == "U":
-#         count_u += 1
-#     if letter == "D":
-#         count_d += 1
-
-
-# valley_count = 0
-
-# if count_u % count_d == 0:
-#     valley_count += 1
-
-# print(valley_count)
-
-
+# steps = "DDUUDDUDUUUD"
+steps = "UDDDUDUU"
 
 letter_with_count = []
 
@@ -41,8 +20,16 @@ for i, letter in enumerate(steps):
         if len(repeated_letters) >= 2:
             letter_with_count.append(repeated_letters)
         repeated_letters = letter
-
+if len(repeated_letters) > 1:
+    letter_with_count.append(repeated_letters)
 print(letter_with_count)
+# ['DD', 'UU', 'DD', 'UUU']
 
-# DD UU DD U   D UUU D
-# 2D 2U 2D 1U 1D 3U
+# counter = 0
+
+# up_down_step = ''
+# for step_type in repeated_letters:
+#     if not up_down_step:
+#         up_down_step += step_type
+    
+     
