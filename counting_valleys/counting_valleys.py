@@ -1,45 +1,52 @@
+"""Count the number of valleys Gary, a hiker, traverses."""
+
 steps = "DDUUDDUDUUUD"
-# steps = "UDDDUDUU"
-
-letter_with_count = []
-repeated_letters = ''
-
-for i, letter in enumerate(steps):
-    if not repeated_letters:
-        repeated_letters += letter
-    
-    #if letter is in repeated_letters, then we have a repeated letter -- add it to the repeated_letters list
-    elif letter in repeated_letters:
-        repeated_letters += letter
-
-    #letter is not in repeated_letters, then we have a new letter. 
-    #Tally up the current repeated letters and their count and make the new -- unique -- letter the compariosn letter 
-    elif letter not in repeated_letters:
-        if len(repeated_letters) >= 2:
-            letter_with_count.append(repeated_letters)
-        repeated_letters = letter
-
-#At the end of the string, and will add in the repeated letters ONLY if there's multiple 
-if len(repeated_letters) > 1:
-    letter_with_count.append(repeated_letters)
-print(letter_with_count)
 
 
-counter = 0
-up_down_step = ''
-for step_type in letter_with_count:
-    # if the type of step (up or down) is not in the empty string, then ad it
-    if not up_down_step:
-        up_down_step += step_type
+def find_repeated_letters(steps):
+    """Return a list of repeated letters
+    -- if the repeated letters appear side-by-side"""
 
-    #If the types of steps are the same, don't touch the count -- i'm not traversing a valley
-    elif step_type in up_down_step:
-        counter += 0
+    letter_with_count = []
+    repeated_letters = ""
 
-    #The types of steps are differnet (ie, i go down then I go up -- so I count it as a valley)
-    else:
-        counter += 1
+    for letter in steps:
+        if not repeated_letters:
+            repeated_letters += letter
 
-print(counter)
-    
-     
+        elif letter in repeated_letters:
+            repeated_letters += letter
+
+        elif letter not in repeated_letters:
+            if len(repeated_letters) >= 2:
+                letter_with_count.append(repeated_letters)
+            repeated_letters = letter
+
+    if len(repeated_letters) > 1:
+        letter_with_count.append(repeated_letters)
+    return letter_with_count
+
+
+repeated_letters = find_repeated_letters(steps)
+
+
+def count_valleys(repeated_letters):
+    """Count the number of valleys from the repeated letter list.
+    A valley has an equal or greater number of up steps as down steps."""
+
+    counter = 0
+    up_down_step = ""
+    for step_type in repeated_letters:
+        if not up_down_step:
+            up_down_step += step_type
+
+        elif step_type in up_down_step:
+            counter += 0
+
+        else:
+            counter += 1
+
+    return counter
+
+
+print(count_valleys(repeated_letters))
