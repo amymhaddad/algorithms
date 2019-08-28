@@ -1,0 +1,1 @@
+Find the greatest common denominator for two given numbers.
